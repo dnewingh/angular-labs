@@ -14,9 +14,28 @@ ng add @ng-bootstrap/ng-bootstrap
 ```shell
 ng g c component-name
 ```
+Example output *home.component.ts*
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [],
+  template: `
+    <p>
+      home works!
+    </p>
+  `,
+  styles: ``
+})
+export class HomeComponent {
+
+}
+```
 
 ## Create route
-Example route:
+Example route *app.routes.ts*:
 ```ts
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -28,6 +47,29 @@ export const routes: Routes = [
         title: 'Home Page'
     }
 ];
+```
+
+## Import and render a child component
+Example output *home.component.ts*:
+```ts
+import { Component } from '@angular/core';
+import { HomeListingSelectorComponent } from '../home-listing-selector/home-listing-selector.component';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  imports: [HomeListingSelectorComponent],
+  template: `
+    <p>
+      home works!
+    </p>
+    <app-home-listing-selector></app-home-listing-selector>
+  `,
+  styles: ``
+})
+export class HomeComponent {
+
+}
 ```
 
 ## Reference guide project elements
