@@ -7,6 +7,7 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   template: `
     <h1>Welcome to {{title}}!</h1>
+    <button type="button" class="btn btn-primary">Primary</button>
 
     <router-outlet />
   `,
