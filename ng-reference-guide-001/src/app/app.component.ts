@@ -6,10 +6,11 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <h1>Welcome to {{title}}!</h1>
-    <button type="button" class="btn btn-primary">Primary</button>
-
-    <router-outlet />
+    <div>placeholder for top nav bar</div>
+    <main class="container">
+      <router-outlet />
+    </main>
+    
   `,
   styles: [],
 })
