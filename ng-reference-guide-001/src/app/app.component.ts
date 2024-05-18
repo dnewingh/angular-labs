@@ -6,7 +6,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <div>placeholder for top nav bar</div>
+    <div class="text-center border-bottom"><strong>***placeholder for top nav bar***</strong></div>
     <main class="container">
       <router-outlet />
     </main>
