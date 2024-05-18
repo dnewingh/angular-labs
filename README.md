@@ -78,3 +78,8 @@ export class HomeComponent {
     - '/' -> Home
     - '/router' -> Router
     - '/forms' -> Forms
+
+## Useful Links
+### Inputs and Outputs
+https://angular.io/guide/inputs-outputs
+![Inputs Outputs](https://angular.io/generated/images/guide/inputs-outputs/input-output-diagram.svg "Inputs Outputs")
