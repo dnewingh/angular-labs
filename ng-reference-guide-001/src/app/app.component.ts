@@ -6,13 +6,15 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet, RouterModule],
   template: `
-    <nav class="text-center border-bottom">
-      <strong>***placeholder for top nav bar***</strong>
-      <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/actors">Actors</a></li>
-        <li><a routerLink="/toy-selector-001">Toy Selector</a></li>
-      </ul>
+    <nav class="navbar navbar-expand border-bottom">
+      <div class="container-fluid">
+        <strong class="navbar-brand">***placeholder for top nav bar***</strong>
+        <div class="navbar-nav">
+          <a class="nav-link" routerLink="/">Home</a>
+          <a class="nav-link" routerLink="/actors">Actors</a>
+          <a class="nav-link" routerLink="/toy-selector-001">Toy Selector</a>
+        </div>
+      </div>
     </nav>
     <main class="container">
       <router-outlet />
