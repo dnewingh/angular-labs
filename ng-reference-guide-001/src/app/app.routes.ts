@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { ToySelector001Component } from './toy-selector-001/toy-selector-001.component';
 import { ItemParentComponent } from './item-parent/item-parent.component';
 import { ActorsComponent } from './actors/actors.component';
+import { ActorDetailsComponent } from './actor-details/actor-details.component';
 
 export const routes: Routes = [
     {
@@ -24,5 +25,10 @@ export const routes: Routes = [
         path: 'actors',
         component: ActorsComponent,
         title: 'Actors'
+    },
+    {
+        path: 'actors/:id',
+        component: ActorDetailsComponent,
+        title: 'Actor Details'
     }
 ];

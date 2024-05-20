@@ -34,4 +34,9 @@ export class RemoteActorsService {
       return await response.json();
     }
 
+    async getActorDetails(actorId: string) {
+      const response = await fetch(this.url + '/' + actorId);
+      return await response.json();
+    }
+
 }

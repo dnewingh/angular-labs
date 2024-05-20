@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LocalActorsService } from '../local-actors.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RemoteActorsService } from '../remote-actors.service';
 
 @Component({
@@ -30,8 +30,10 @@ import { RemoteActorsService } from '../remote-actors.service';
         <p>Loading...</p>
       } @else {
         <ul>
-          @for(actor of remoteActors; track actor) {
-            <li>{{ actor }}</li>
+          @for(actor of remoteActors; track actor.id) {
+            <li>
+              <button type="button" (click)="navigateToActorDetails(actor.id)">{{ actor.title }}</button>
+            </li>
           }
         </ul>
       }
@@ -44,8 +46,9 @@ export class ActorsComponent {
   localActorsService: LocalActorsService = inject(LocalActorsService);
   componentActors: string[] = [];
   route: ActivatedRoute = inject(ActivatedRoute);
+  router: Router = inject(Router);
   remoteActorsService: RemoteActorsService = inject(RemoteActorsService);
-  remoteActors: string[] = [];
+  remoteActors: {id: string, title: string, views: number}[] = [];
   remoteActorsIsRefreshing: boolean = false;
 
   async addNewItem() {
@@ -59,9 +62,13 @@ export class ActorsComponent {
 
   async getRemoteActors() {
     this.remoteActorsIsRefreshing = true;
-    const actorsResponse: {id: string, title: string, view: number }[] = await this.remoteActorsService.getActors();
-    this.remoteActors = actorsResponse.map(el => el.title);
+    const actorsResponse: {id: string, title: string, views: number }[] = await this.remoteActorsService.getActors();
+    this.remoteActors = actorsResponse;
     this.remoteActorsIsRefreshing = false;
+  }
+
+  navigateToActorDetails(id: string) {
+    this.router.navigate(['/actors', id]);
   }
 
 }
