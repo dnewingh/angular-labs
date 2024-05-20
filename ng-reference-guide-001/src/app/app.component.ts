@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterModule],
   template: `
-    <div class="text-center border-bottom"><strong>***placeholder for top nav bar***</strong></div>
+    <nav class="text-center border-bottom">
+      <strong>***placeholder for top nav bar***</strong>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/actors">Actors</a></li>
+        <li><a routerLink="/toy-selector-001">Toy Selector</a></li>
+      </ul>
+    </nav>
     <main class="container">
       <router-outlet />
     </main>
