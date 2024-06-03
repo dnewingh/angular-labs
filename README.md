@@ -83,3 +83,4 @@ export class HomeComponent {
 ### Inputs and Outputs
 https://angular.io/guide/inputs-outputs
 ![Inputs Outputs](https://angular.io/generated/images/guide/inputs-outputs/input-output-diagram.svg "Inputs Outputs")
+https://armenvardanyan.dev/
