@@ -8,9 +8,16 @@ import { RouterOutlet } from '@angular/router';
   template: `
     <h1>Welcome to {{title}}!</h1>
 
-    <router-outlet />
+    <div class="container">
+      <router-outlet />
+    </div>
   `,
-  styles: [],
+  styles: [`
+    h1 {
+      border-bottom: black solid 0.5px;
+      padding: 8px
+    }
+  `],
 })
 export class AppComponent {
   title = 'ng-20240625';

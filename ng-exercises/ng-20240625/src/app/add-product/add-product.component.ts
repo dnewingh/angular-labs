@@ -1,16 +1,72 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+interface NewProduct {
+  productName: string,
+  productPhotoUrl: string
+}
+
+interface Product extends NewProduct {
+  id: number
+}
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, JsonPipe],
   template: `
-    <p>
-      add-product works!
-    </p>
+    <section id="add-product">
+      <header>
+        <h1>Add Product</h1>
+      </header>
+      <main>        
+        <div class="mb-3">
+          <label for="input-product-name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="input-product-name" placeholder="Wood Donkey" required [(ngModel)]='inputProduct.productName'>
+        </div>
+        <div class="mb-3">
+          <label for="input-product-photo-url" class="form-label">Photo URL</label>
+          <input type="text" class="form-control" id="input-product-photo-url" [(ngModel)]='inputProduct.productPhotoUrl'>
+        </div>
+        <button class="btn btn-primary" (click)="submitNewProduct()">Submit</button>        
+      </main>
+    </section>
+
+    <section id="all-products" class="mt-4">
+      <header>
+        <h1>All Products</h1>
+      </header>
+      <main>
+        <pre>
+          {{ products | json }}
+        </pre>
+      </main>
+    </section>
+
   `,
-  styles: ``
+  styles: `
+    button {
+      display: inline-block;
+      width: 100%
+    }
+  `
 })
 export class AddProductComponent {
+  inputProduct: NewProduct = {
+    productName: '',
+    productPhotoUrl: ''
+  };
 
+  products: Product[] = [
+    {
+      id: 1,
+      productName: 'Buzz',
+      productPhotoUrl: 'https://www.buzz.com/'
+    }
+  ];
+
+  submitNewProduct() {
+    console.log(this.inputProduct)
+  }
 }
