@@ -1,15 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-interface NewProduct {
-  productName: string,
-  productPhotoUrl: string
-}
-
-interface Product extends NewProduct {
-  id: number
-}
+import { NewProduct, Product, ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-add-product',
@@ -53,20 +45,26 @@ interface Product extends NewProduct {
   `
 })
 export class AddProductComponent {
+  productsService: ProductsService;
   inputProduct: NewProduct = {
     productName: '',
     productPhotoUrl: ''
   };
 
-  products: Product[] = [
-    {
-      id: 1,
-      productName: 'Buzz',
-      productPhotoUrl: 'https://www.buzz.com/'
-    }
-  ];
+  products: Product[] = [];
+
+  constructor(productsService: ProductsService) {
+    this.productsService = productsService;
+   }
+
+   ngOnInit() {
+    this.products = this.productsService.getProducts();
+   }
 
   submitNewProduct() {
-    console.log(this.inputProduct)
+    //console.log(this.inputProduct)
+    const addedProduct = this.productsService.addProduct(this.inputProduct);
+    //console.log(addedProduct);
+    this.products = this.productsService.getProducts();
   }
 }
