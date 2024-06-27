@@ -13,6 +13,7 @@ export interface Product extends NewProduct {
   providedIn: 'root'
 })
 export class ProductsService {
+  remoteUrl: string = 'http://127.0.0.1:8000/api/products/'
   products: Product[] = [
     {
       id: 1,
@@ -40,4 +41,24 @@ export class ProductsService {
 
     return productToAdd;    
   }
+
+  async fetchProducts() {
+    try {
+      const response = await fetch(this.remoteUrl);
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+      const data = await response.json();
+      console.log(data);
+      this.products = data;
+
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
+    
+    return this.products;
+  }
+
 }

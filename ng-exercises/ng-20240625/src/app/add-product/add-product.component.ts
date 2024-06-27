@@ -57,8 +57,8 @@ export class AddProductComponent {
     this.productsService = productsService;
    }
 
-   ngOnInit() {
-    this.products = this.productsService.getProducts();
+   async ngOnInit() {
+    this.products = await this.productsService.fetchProducts();
    }
 
   submitNewProduct() {
